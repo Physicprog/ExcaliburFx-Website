@@ -1,11 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ExcaliburFx - Home</title>
+    <title>Portfolio | Khylian</title>
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="icon" href="./assets/img/logo.webp" />
 </head>
-<body>
-    <!--Parallax showcase-->
+
+<body data-speed="0.5">
+
+    <div id="loader">
+        <div class="spinner"></div>
+    </div>
+
+
+
+    <header class="site-header" id="header">
+        <div class="header-container">
+            <div class="header-inner">
+                <div class="logo-section">
+                    <a href="#">
+                        <div class="logo-navbar"></div>
+                    </a>
+                </div>
+
+                <nav class="main-navigation">
+                    <a href="#" class="btn-project">Mes projets</a>
+                    <a href="#" class="btn-contact">Contactez-moi</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+
+
+    <section class="hero-section">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="rating" id="starsRate">
+                </div>
+
+                <h1 class="hero-title">
+                    Prêt à <span class="animated-text" id="customText"></span> votre entreprise avec des vidéos
+                    incroyables ?
+                </h1>
+
+                <p class="hero-description">
+                    Je m'assure que vos vidéos ne se contentent pas d'être belles – elles se démarquent.
+                    Avec des effets visuels précis qui font briller chaque image.
+                    Chaque projet reçoit l'attention qu'il mérite – image par image.
+                </p>
+
+                <a href="#form" class="btn-primary">Contact</a>
+            </div>
+
+            <div class="hero-video">
+                <video autoplay muted loop>
+                    <source src="./assets/video/heroVideo.mp4" type="video/mp4">
+                </video>
+            </div>
+
+
+        </div>
+    </section>
+
+
 </body>
+
+<script type="text/javascript" src="./js/main.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<script>
+    AOS.init();
+</script>
+
 </html>

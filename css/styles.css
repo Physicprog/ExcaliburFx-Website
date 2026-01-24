@@ -1,0 +1,53 @@
+@import url('./components/navbar.css');
+@import url('./components/hero-page.css');
+@import url('./loader.css');
+
+@font-face {
+    font-family: 'Museosans';
+    src: url("./../../assets/font/Museosans.ttf") format('truetype');
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-dark: #0E0C0C;
+    --text-light: #ffffff;
+    --text-gray: #b8b8b8;
+    --accent-color: #ff6b35;
+    --purple-color: #702fc0;
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+body {
+    font-family: 'Museosans', sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+#customText::after {
+    content: '|';
+    display: inline-block;
+    margin-left: 2px;
+    animation: blink 2s steps(1) infinite;
+}
+
+@keyframes blink {
+
+    0%,
+    50%,
+    100% {
+        opacity: 1;
+    }
+
+    25%,
+    75% {
+        opacity: 0;
+    }
+}
