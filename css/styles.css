@@ -27,7 +27,6 @@ html {
     --bg-dark: #0E0C0C;
     --text-light: #ffffff;
     --text-gray: #898989;
-    /* Couleur d'accent dynamique contrôlée par JavaScript */
     --accent-color: hsl(270, 100%, 55%);
     --purple-color: #702fc0;
     --glass-bg: rgba(255, 255, 255, 0.05);
