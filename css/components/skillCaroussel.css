@@ -1,0 +1,68 @@
+#skill-section p {
+    width: fit-content;
+    margin: 0 auto 30px auto;
+    text-align: center;
+    font-size: .8em;
+    color: #808080;
+    border: 2px solid #464646;
+    border-radius: 8px;
+    padding: 5px 10px;
+}
+
+.container {
+    overflow: hidden;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.carousel {
+    overflow: visible;
+    width: 100%;
+    position: relative;
+}
+
+.carousel-inner {
+    display: flex;
+    gap: 10px;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -khtml-user-select: none;
+}
+
+.slide {
+    position: relative;
+    flex: 0 0 auto;
+    min-width: 200px;
+    text-align: center;
+}
+
+.slide img {
+    width: 100%;
+    height: 80px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+}
+
+.slide p {
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+    color: #808080;
+    border: 2px solid #464646;
+    border-radius: 8px;
+    padding: 5px 10px;
+    background: rgba(0, 0, 0, 0.8);
+    transition: font-size 0.3s ease, opacity 0.3s ease, top 0.3s ease;
+    opacity: 0;
+    white-space: nowrap;
+    z-index: 9999;
+}

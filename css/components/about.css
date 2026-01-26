@@ -1,0 +1,123 @@
+.about {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 5vw 3vw;
+    box-sizing: border-box;
+}
+
+.about .left {
+    flex: 1 1 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.about .left img {
+    border: 2px solid var(--accent-color);
+    border-radius: 12px;
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-top: 2rem;
+}
+
+.stat-showcase {
+    width: 100%;
+    margin-top: 2rem;
+    padding: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 1rem;
+    border-radius: 12px;
+    border: 2px solid var(--accent-color);
+    background-color: #1c0f0f;
+    box-sizing: border-box;
+}
+
+.stat-showcase .stat {
+    flex: 1 1 100px;
+    text-align: center;
+}
+
+.stat-showcase .stat .number {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--accent-color);
+    font-family: 'Poppins', sans-serif;
+}
+
+.stat-showcase .stat .label {
+    font-size: 0.9rem;
+    color: #b5b5b5;
+    margin-top: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.about .right {
+    flex: 1 1 300px;
+    max-width: 600px;
+}
+
+.about h2 {
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+}
+
+.about p {
+    color: #b5b5b5;
+    font-size: clamp(0.9rem, 2vw, 1rem);
+    line-height: 1.6;
+}
+
+.highlight {
+    position: relative;
+    display: inline-block;
+    padding: 0.5rem 1rem;
+}
+
+.highlight::after {
+    content: "";
+    position: absolute;
+    inset: -0.75rem -1.5rem;
+    border: 4px solid var(--accent-color);
+    border-radius: 60% 55% 65% 50%;
+    transform: rotate(-4deg);
+    pointer-events: none;
+}
+
+.name-wrapper {
+    position: relative;
+    display: inline-block;
+    padding: 0 0.5rem;
+}
+
+.hand-circle {
+    position: absolute;
+    top: 45%;
+    left: 20%;
+    width: 300%;
+    height: 200%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+}
+
+.hand-circle path {
+    fill: none;
+    stroke: var(--accent-color);
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    opacity: 1;
+}

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Khylian</title>
+
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="icon" href="./assets/img/logo.webp" />
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/rellax@1.12.1/rellax.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div id="loader">
+        <div class="spinner"></div>
+    </div>
+
+    <header class="site-header" id="header" data-aos="fade-down" data-aos-easing="ease" data-aos-duration="1500">
+        <div class="header-container">
+            <div class="header-inner">
+                <div class="logo-section">
+                    <a href="#">
+                        <div class="logo-navbar"></div>
+                    </a>
+                </div>
+                <nav class="main-navigation">
+                    <a href="#" class="btn-project" data-aos="fade-zoom-in" data-aos-easing="ease"
+                        data-aos-duration="2000" data-aos-delay="500">Mes projets</a>
+                    <a href="#" class="btn-contact" data-aos="fade-zoom-in" data-aos-easing="ease"
+                        data-aos-duration="2000" data-aos-delay="1000">Contactez-moi</a>
+                </nav>
+            </div>
+        </div>
+
+        <div class="settingsPanel">
+            <div class="settingsIcon">
+                <span class="material-icons">settings</span>
+            </div>
+            <div class="settingsContent">
+                <h3>Paramètres</h3>
+                <div class="settings-body">
+                    <div class="setting-item">
+                        <label for="slider1">
+                            Hue
+                            <span class="slider-value" id="value1">270</span>
+                        </label>
+                        <input type="range" id="slider1" min="0" max="360" value="270">
+                    </div>
+                    <div class="setting-item">
+                        <label for="slider2">
+                            Saturation
+                            <span class="slider-value" id="value2">100</span>
+                        </label>
+                        <input type="range" id="slider2" min="0" max="100" value="100">
+                    </div>
+                    <div class="setting-item">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="disableAOS">
+                            <label id="textCheckbox">Disable AOS animation</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero-section">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="rating" id="starsRate"></div>
+                <h1 class="hero-title">
+                    Prêt à <span class="animated-text" id="customText"></span> votre entreprise<br>avec des vidéos
+                    incroyables ?
+                </h1>
+                <p class="hero-description">
+                    Je m'assure que vos vidéos ne se contentent pas d'être belles – elles se démarquent.
+                    Avec des effets visuels précis qui font briller chaque image.
+                    Chaque projet reçoit l'attention qu'il mérite – image par image.
+                </p>
+                <a href="#skill-section" class="btn-arrow">
+                    <div class="btn-arrow-border">
+                        <img src="./assets/img/arrow.png" alt="arrow icon">
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="skill-section">
+        <p id="skill-title">Mes compétences</p>
+        <div class="container">
+            <div class="carousel">
+                <div class="carousel-inner">
+                    <div class="slide"><img src="./assets/img/caroussel/JavaScript.png" alt="javascript">
+                        <p>JavaScript</p>
+                    </div>
+                    <div class="slide"><img src="./assets/img/caroussel/MySQL.png" alt="mysql">
+                        <p>MySQL</p>
+                    </div>
+                    <div class="slide"><img src="./assets/img/caroussel/Python.png" alt="python">
+                        <p>Python</p>
+                    </div>
+                    <div class="slide"><img src="./assets/img/caroussel/Tailwind.png" alt="tailwind">
+                        <p>Tailwind</p>
+                    </div>
+                    <div class="slide"><img src="./assets/img/caroussel/React.png" alt="react">
+                        <p>React</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about">
+        <div class="left">
+            <img src="./assets/img/photographe-portrait-professionnel-haut-de-gamme-toulouse.jpg"
+                alt="Photographe portrait professionnel haut de gamme Toulouse">
+            <div class="stat-showcase">
+                <div class="stat">
+                    <div class="number" data-target="21">K</div>
+                    <div class="label">Followers</div>
+                </div>
+                <div class="stat">
+                    <div class="number" data-target="100">K</div>
+                    <div class="label">Viewers</div>
+                </div>
+                <div class="stat">
+                    <div class="number" data-target="50">K</div>
+                    <div class="label">Likes</div>
+                </div>
+            </div>
+        </div>
+        <div class="right">
+            <h2>
+                Salut, je suis
+
+                <span class="name-wrapper">
+                    Khylian <span class="wave">👋</span>
+                    <svg class="hand-circle" viewBox="0 0 100 30">
+                        <path
+                            d="M 15 20 C 28 12 45 5 60 5 C 80 5 100 8 100 15 C 100 22 80 25 60 25 C 45 25 28 18 15 8" />
+                    </svg>
+                </span>
+
+
+
+
+                </span>
+            </h2>
+
+            <p>
+                Je crée des vidéos qui ne sont pas seulement belles à regarder, mais qui font ressentir quelque
+                chose.<br><br>
+                Que ce soit pour les réseaux sociaux, le storytelling de marque ou des films cinématographiques
+                émotionnels, mon objectif est de raconter des histoires marquantes qui créent une vraie connexion avec
+                les gens.<br><br>
+                Avec un rendu cinématographique, des speed ramps fluides et des animations 3D, je conçois des contenus
+                accrocheurs qui arrêtent le scroll, captent l’attention et retiennent les spectateurs.<br><br>
+                Mon style de montage incite les gens à rester plus longtemps et à interagir davantage, ce qui améliore
+                les performances de votre contenu et fait grandir votre marque.<br><br>
+                Vous bénéficiez de tout à partir d’une seule source : du concept au tournage, en passant par le montage,
+                le sound design et l’étalonnage des couleurs. Chaque détail est soigneusement travaillé pour offrir un
+                résultat puissant et professionnel.<br><br>
+                En plus de la production vidéo, je propose également du coaching individuel pour les vidéastes et
+                monteurs, afin de partager mon workflow, mon état d’esprit créatif et mes techniques VFX pour aider
+                chacun à passer au niveau supérieur.<br><br>
+            </p>
+
+        </div>
+    </section>
+
+
+    <section class="projectShowcase">
+        <div class="title-container">
+            <h1 id="ProjectTitle">Mes projets</h1>
+            <svg class="underline-circle" viewBox="0 0 250 30">
+                <path d="M 10 15 Q 125 5, 240 15" />
+            </svg>
+        </div>
+
+        <div class="cards-container">
+            <div class="card">
+                <div class="project-info">
+                    <h2 class="project-name">Projet Portfolio</h2>
+                    <p class="project-description">Un portfolio moderne et responsive avec des animations fluides et une
+                        interface utilisateur intuitive. Développé avec les dernières technologies web.</p>
+                    <a href="#" class="project-link">Voir le projet →</a>
+                </div>
+                <div class="project-image">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500" alt="Projet 1">
+                </div>
+            </div>
+
+            <div class="card reverse">
+                <div class="project-info">
+                    <h2 class="project-name">Application E-commerce</h2>
+                    <p class="project-description">Une plateforme e-commerce complète avec gestion de panier, paiements
+                        sécurisés et interface d'administration. Design moderne et performant.</p>
+                    <a href="#" class="project-link">Voir le projet →</a>
+                </div>
+                <div class="project-image">
+                    <img src="https://images.unsplash.com/photo-1557821552-17105176677c?w=500" alt="Projet 2">
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="project-info">
+                    <h2 class="project-name">Dashboard Analytics</h2>
+                    <p class="project-description">Tableau de bord interactif pour la visualisation de données en temps
+                        réel avec graphiques dynamiques et statistiques avancées.</p>
+                    <a href="#" class="project-link">Voir le projet →</a>
+                </div>
+                <div class="project-image">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500" alt="Projet 3">
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-header">
+                <h1 class="logo-text">Khylian.</h1>
+                <p class="subtitle">Khylian Griffon-Nicolas</p>
+            </div>
+
+            <div class="footer-main">
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <div class="contact-info">
+                        <a href="tel:+4915174273696" class="contact-item">
+                            <span>
+                                <img src="" alt="phone">
+                            </span>
+                            <span>+07 81 12 30 52</span>
+                        </a>
+                        <a href="mailto:projects@pascal-zero7.com" class="contact-item">
+                            <span>
+                                <img src="" alt="email">
+                            </span>
+                            <span>khylian.griffon-nicolas@hotmail.com </span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Pages</h3>
+                    <nav class="pages-nav">
+                        <a href="/">Acceuil</a>
+                        <a href="/projects">politique de confidentialité</a>
+                        <a href="/contact">Contact</a>
+                        <a href="/impressum">Mentions légales</a>
+                    </nav>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p class="copyright">© 2026 Khylian Griffon--Nicolas. Tous droits réservés.</p>
+                <div class="developer">
+                    <span>Développé par</span>
+                    <span class="developer-logo">Khylian</span>
+
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+
+</body>
+<script type="text/javascript" src="./js/main.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script type="text/javascript" src="./js/resize.js"></script>
+<script>
+    AOS.init({
+        duration: 1000,
+        once: false
+    });
+</script>
+
+</html>

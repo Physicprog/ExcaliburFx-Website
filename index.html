@@ -1,81 +1,380 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio | Khylian</title>
+    <meta name="robots" content="noindex, nofollow">
+    <title>Khylian | Home</title>
 
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="./css/styles.css">
-    <link rel="icon" href="./assets/img/logo.webp" />
+    <!-- GSAP for animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            overflow: hidden;
+            height: 100vh;
+            position: relative;
+            background: #000;
+        }
+
+        .container {
+            display: flex;
+            height: 100vh;
+            width: 100vw;
+        }
+
+        .side {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            cursor: pointer;
+            transition: flex 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+        }
+
+        .side::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 0.8s ease;
+            z-index: 1;
+        }
+
+        .side:hover::before {
+            opacity: 0.15;
+        }
+
+        .side:hover {
+            flex: 1.2;
+        }
+
+        .side.active {
+            flex: 100;
+        }
+
+        /* Left Side - Black (Personal) */
+        .left {
+            background: #000000;
+            color: #fff;
+        }
+
+        .left::before {
+            background: radial-gradient(circle at center, rgba(255, 255, 255, 0.1), transparent 70%);
+        }
+
+        /* Right Side - White (Professional) */
+        .right {
+            background: #ffffff;
+            color: #000;
+        }
+
+        .right::before {
+            background: radial-gradient(circle at center, rgba(0, 0, 0, 0.1), transparent 70%);
+        }
+
+        .content {
+            text-align: center;
+            z-index: 2;
+            position: relative;
+            padding: 2rem;
+            opacity: 0;
+            transform: translateY(40px);
+        }
+
+        .icon {
+            font-size: 6rem;
+            margin-bottom: 2rem;
+            font-weight: 100;
+            letter-spacing: -0.05em;
+        }
+
+        .icon .material-symbols-outlined {
+            font-size: 6rem;
+            font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 48;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 200;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        p {
+            font-size: 1rem;
+            font-weight: 300;
+            max-width: 300px;
+            margin: 0 auto;
+            letter-spacing: 0.05em;
+            line-height: 1.6;
+        }
+
+        .divider {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 1px;
+            height: 100%;
+            background: linear-gradient(to bottom,
+                    transparent 0%,
+                    rgba(128, 128, 128, 0.3) 20%,
+                    rgba(128, 128, 128, 0.6) 50%,
+                    rgba(128, 128, 128, 0.3) 80%,
+                    transparent 100%);
+            transform: translateX(-50%);
+            z-index: 10;
+        }
+
+        .hint {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1.2rem;
+            opacity: 0;
+            z-index: 11;
+            font-weight: 300;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            pointer-events: none;
+            mix-blend-mode: difference;
+            color: #fff;
+        }
+
+        .particles {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            border-radius: 50%;
+        }
+
+        .left .particle {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .right .particle {
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .divider {
+                top: 50%;
+                left: 0;
+                width: 100%;
+                height: 1px;
+                transform: translateY(-50%);
+                background: linear-gradient(to right,
+                        transparent 0%,
+                        rgba(128, 128, 128, 0.3) 20%,
+                        rgba(128, 128, 128, 0.6) 50%,
+                        rgba(128, 128, 128, 0.3) 80%,
+                        transparent 100%);
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .icon .material-symbols-outlined {
+                font-size: 4rem;
+            }
+
+            p {
+                font-size: 0.9rem;
+            }
+
+            .hint {
+                font-size: 1rem;
+                letter-spacing: 0.15em;
+            }
+        }
+
+        .noise {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.03;
+            z-index: 100;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='4' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+    </style>
 </head>
 
-<body data-speed="0.5">
+<body>
+    <div class="noise"></div>
 
-    <div id="loader">
-        <div class="spinner"></div>
+    <div class="container">
+        <div class="side left" data-url="./perso.html">
+            <div class="particles" id="particles-left"></div>
+            <div class="content">
+                <div class="icon">
+                    <span class="material-symbols-outlined">camera</span>
+                </div>
+                <h1>Personnel</h1>
+                <p>Contenu créatif, projets & espace personnel</p>
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="side right" data-url="./pro.html">
+            <div class="particles" id="particles-right"></div>
+            <div class="content">
+                <div class="icon">
+                    <span class="material-symbols-outlined">work</span>
+                </div>
+                <h1>Professionnel</h1>
+                <p>Expérience, compétences & réalisations</p>
+            </div>
+        </div>
     </div>
 
+    <div class="hint">Choisissez votre route</div>
 
+    <script>
+        // Create particles
+        function createParticles(containerId, count) {
+            const container = document.getElementById(containerId);
+            for (let i = 0; i < count; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                container.appendChild(particle);
 
-    <header class="site-header" id="header">
-        <div class="header-container">
-            <div class="header-inner">
-                <div class="logo-section">
-                    <a href="#">
-                        <div class="logo-navbar"></div>
-                    </a>
-                </div>
+                gsap.to(particle, {
+                    y: Math.random() * 60 - 30,
+                    x: Math.random() * 60 - 30,
+                    duration: Math.random() * 4 + 3,
+                    repeat: -1,
+                    yoyo: true,
+                    ease: 'sine.inOut',
+                    delay: Math.random() * 2
+                });
+            }
+        }
 
-                <nav class="main-navigation">
-                    <a href="#" class="btn-project">Mes projets</a>
-                    <a href="#" class="btn-contact">Contactez-moi</a>
-                </nav>
-            </div>
-        </div>
-    </header>
+        createParticles('particles-left', 30);
+        createParticles('particles-right', 30);
 
+        // Animate elements on load
+        gsap.timeline()
+            .to('.content', {
+                opacity: 1,
+                y: 0,
+                duration: 1.2,
+                stagger: 0.3,
+                ease: 'power3.out',
+                delay: 0.2
+            })
+            .to('.hint', {
+                opacity: 0.6,
+                duration: 1,
+                ease: 'power2.out'
+            }, '-=0.6')
+            .to('.hint', {
+                opacity: 0.3,
+                duration: 2,
+                repeat: -1,
+                yoyo: true,
+                ease: 'sine.inOut'
+            });
 
+        // Divider pulse animation
+        gsap.to('.divider', {
+            opacity: 0.4,
+            duration: 2,
+            repeat: -1,
+            yoyo: true,
+            ease: 'sine.inOut'
+        });
 
-    <section class="hero-section">
-        <div class="hero-container">
-            <div class="hero-content">
-                <div class="rating" id="starsRate">
-                </div>
+        // Handle side clicks
+        document.querySelectorAll('.side').forEach(side => {
+            side.addEventListener('click', function () {
+                const url = this.dataset.url;
+                const otherSide = this.classList.contains('left')
+                    ? document.querySelector('.right')
+                    : document.querySelector('.left');
 
-                <h1 class="hero-title">
-                    Prêt à <span class="animated-text" id="customText"></span> votre entreprise avec des vidéos
-                    incroyables ?
-                </h1>
+                // Add active class
+                this.classList.add('active');
 
-                <p class="hero-description">
-                    Je m'assure que vos vidéos ne se contentent pas d'être belles – elles se démarquent.
-                    Avec des effets visuels précis qui font briller chaque image.
-                    Chaque projet reçoit l'attention qu'il mérite – image par image.
-                </p>
+                // Animate out other side
+                gsap.to(otherSide, {
+                    opacity: 0,
+                    duration: 0.6,
+                    ease: 'power2.inOut'
+                });
 
-                <a href="#form" class="btn-primary">Contact</a>
-            </div>
+                // Scale up clicked side content
+                gsap.to(this.querySelector('.content'), {
+                    scale: 1.1,
+                    duration: 0.8,
+                    ease: 'power2.inOut'
+                });
 
-            <div class="hero-video">
-                <video autoplay muted loop>
-                    <source src="./assets/video/heroVideo.mp4" type="video/mp4">
-                </video>
-            </div>
+                // Fade out divider and hint
+                gsap.to('.divider, .hint', {
+                    opacity: 0,
+                    duration: 0.5
+                });
 
+                setTimeout(() => {
+                    window.location.href = url;
+                }, 900);
+            });
 
-        </div>
-    </section>
+            side.addEventListener('mouseenter', function () {
+                gsap.to(this.querySelector('.content'), {
+                    y: -10,
+                    duration: 0.6,
+                    ease: 'power2.out'
+                });
+            });
 
-
+            side.addEventListener('mouseleave', function () {
+                if (!this.classList.contains('active')) {
+                    gsap.to(this.querySelector('.content'), {
+                        y: 0,
+                        duration: 0.6,
+                        ease: 'power2.out'
+                    });
+                }
+            });
+        });
+    </script>
 </body>
-
-<script type="text/javascript" src="./js/main.js"></script>
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
-<script>
-    AOS.init();
-</script>
 
 </html>
