@@ -3,8 +3,8 @@ function addStarRating() {
     if (!starsRate) return;
 
     const starCount = 5;
-    const favSrc = "./../assets/img/fav.png";
-    const noFavSrc = "./../assets/img/nofav.png";
+    const favSrc = "assets/img/fav.png";
+    const noFavSrc = "assets/img/nofav.png";
 
     const stars = [];
 
