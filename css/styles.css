@@ -10,7 +10,7 @@
 
 @font-face {
     font-family: 'Museosans';
-    src: url("./../../assets/font/Museosans.ttf") format('truetype');
+    src: url("../assets/font/museosans.ttf") format('truetype');
 }
 
 * {
