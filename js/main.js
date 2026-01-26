@@ -140,12 +140,18 @@ initCarousel();
 
 
 const path = document.querySelector('.hand-circle path');
+const path2 = document.querySelector('.underline-circle path');
 const length = path.getTotalLength();
+const length2 = path2.getTotalLength();
 
 path.style.strokeDasharray = length;
 path.style.strokeDashoffset = length;
 path.style.opacity = 0;
 path.style.filter = 'blur(0px)';
+path2.style.strokeDasharray = length2;
+path2.style.strokeDashoffset = length2;
+path2.style.opacity = 0;
+path2.style.filter = 'blur(0px)';
 
 function animateCircle() {
     path.style.transition = 'stroke-dashoffset 0.5s ease-out, opacity 0.5s ease-out';
@@ -153,16 +159,26 @@ function animateCircle() {
     path.style.strokeDashoffset = 0;
     path.style.filter = 'blur(0px)';
 
+    path2.style.transition = 'stroke-dashoffset 0.5s ease-out, opacity 0.5s ease-out';
+    path2.style.opacity = 1;
+    path2.style.strokeDashoffset = 0;
+    path2.style.filter = 'blur(0px)';
     setTimeout(() => {
         path.style.transition = 'opacity 0.5s ease-out, filter 0.5s ease-out';
         path.style.opacity = 0;
         path.style.filter = 'blur(5px)';
+        path2.style.transition = 'opacity 0.5s ease-out, filter 0.5s ease-out';
+        path2.style.opacity = 0;
+        path2.style.filter = 'blur(5px)';
     }, 2000);
 
     setTimeout(() => {
         path.style.transition = 'none';
         path.style.strokeDashoffset = length;
         path.style.filter = 'blur(0px)';
+        path2.style.transition = 'none';
+        path2.style.strokeDashoffset = length2;
+        path2.style.filter = 'blur(0px)';
     }, 2700);
 }
 
@@ -174,35 +190,40 @@ setInterval(animateCircle, 4000);
 
 
 
-
 function compterJusqua(element) {
-    const cible = element.getAttribute('data-target');
-    let progression = 0;
+    const cible = parseFloat(element.getAttribute('data-target'));
+    const unite = element.textContent.trim(); // 'M' ou 'K'
     const duree = 2000;
     const debut = Date.now();
 
     const interval = setInterval(() => {
         const temps = Date.now() - debut;
-        progression = temps / duree;
+        let progression = temps / duree;
+        if (progression > 1) progression = 1;
 
-        if (progression >= 1) {
-            element.textContent = cible + 'K';
-            clearInterval(interval);
-            return;
-        }
-
-        let courbe; //lent rapide lent
+        let courbe;
         if (progression < 0.5) {
             courbe = 2 * progression * progression;
         } else {
             courbe = 1 - 2 * (1 - progression) * (1 - progression);
         }
 
-        const nombre = Math.floor(courbe * cible);
-        element.textContent = nombre + 'K';
+        let nombreActuel = courbe * cible;
+
+        if (cible < 10) {
+            nombreActuel = nombreActuel.toFixed(1);
+        } else {
+            nombreActuel = Math.round(nombreActuel);
+        }
+
+        element.textContent = nombreActuel + unite;
+
+        if (progression === 1) clearInterval(interval);
     }, 20);
 }
-// que lorsque l'élément est visible
+
+
+
 window.onload = function () {
     const compteurs = document.querySelectorAll('.number');
 
@@ -237,7 +258,6 @@ window.onload = function () {
 
 
 
-
 const settingsIcon = document.querySelector('.settingsIcon');
 const settingsPanel = document.querySelector('.settingsPanel');
 
@@ -246,20 +266,148 @@ settingsIcon.addEventListener('click', () => {
 });
 
 document.addEventListener('click', (e) => {
-    if (!settingsPanel.contains(e.target)) {
+    if (!settingsPanel.contains(e.target) && !settingsIcon.contains(e.target)) {
         settingsPanel.classList.remove('active');
     }
 });
 
-const slider1 = document.getElementById('slider1');
-const slider2 = document.getElementById('slider2');
-const value1 = document.getElementById('value1');
-const value2 = document.getElementById('value2');
+document.addEventListener('DOMContentLoaded', () => {
+    const root = document.documentElement;
 
-slider1.addEventListener('input', (e) => {
-    value1.textContent = e.target.value;
+    const hueSlider = document.getElementById("slider1");
+    const satSlider = document.getElementById("slider2");
+    const hueValue = document.getElementById("value1");
+    const satValue = document.getElementById("value2");
+
+    if (!hueSlider || !satSlider || !hueValue || !satValue) {
+        console.warn("Sliders de couleur non trouvés");
+        return;
+    }
+
+    const LIGHTNESS = 55;
+    const DEFAULT_HUE = 30;
+    const DEFAULT_SAT = 70;
+
+    const savedHue = localStorage.getItem("accentHue") ?? DEFAULT_HUE;
+    const savedSat = localStorage.getItem("accentSat") ?? DEFAULT_SAT;
+
+    hueSlider.value = savedHue;
+    satSlider.value = savedSat;
+
+    function setAccentColor(h, s) {
+        const colorValue = `hsl(${h}, ${s}%, ${LIGHTNESS}%)`;
+        root.style.setProperty("--accent-color", colorValue);
+        hueValue.textContent = h;
+        satValue.textContent = s;
+
+        localStorage.setItem("accentHue", h);
+        localStorage.setItem("accentSat", s);
+    }
+
+    function updateUI() {
+        setAccentColor(hueSlider.value, satSlider.value);
+    }
+
+    hueSlider.addEventListener("input", updateUI);
+    satSlider.addEventListener("input", updateUI);
+
+    updateUI();
+
+    hueValue.textContent = hueSlider.value;
+    satValue.textContent = satSlider.value;
 });
 
-slider2.addEventListener('input', (e) => {
-    value2.textContent = e.target.value;
+document.addEventListener('DOMContentLoaded', () => {
+    const disableAOS = document.getElementById("disableAOS");
+
+    if (!disableAOS) {
+        console.warn("Checkbox AOS non trouvée");
+        return;
+    }
+
+    function disableAOSAnimations() {
+        document.querySelectorAll("[data-aos]").forEach(el => {
+            el.dataset.aosBackup = el.getAttribute("data-aos");
+            el.removeAttribute("data-aos");
+        });
+        if (window.AOS) AOS.refreshHard();
+    }
+
+    function enableAOSAnimations() {
+        document.querySelectorAll("[data-aos-backup]").forEach(el => {
+            el.setAttribute("data-aos", el.dataset.aosBackup);
+            delete el.dataset.aosBackup;
+        });
+        if (window.AOS) AOS.init();
+    }
+
+    disableAOS.addEventListener("change", e => {
+        e.target.checked ? disableAOSAnimations() : enableAOSAnimations();
+    });
+});
+
+
+
+
+
+
+
+
+
+
+
+const form = document.getElementById('form');
+const submitBtn = form.querySelector('button[type="submit"]');
+
+form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+    formData.append("access_key", "62fa18fd-3cf0-4a38-abdb-63a9689b731f");
+
+    const originalText = submitBtn.textContent;
+
+    submitBtn.textContent = "Sending...";
+    submitBtn.disabled = true;
+
+    try {
+        const response = await fetch("https://api.web3forms.com/submit", {
+            method: "POST",
+            body: formData
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+            alert("Success! Your message has been sent.");
+            form.reset();
+        } else {
+            alert("Error: " + data.message);
+        }
+
+    } catch (error) {
+        alert("Something went wrong. Please try again.");
+    } finally {
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+    }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+const burger = document.getElementById('burger');
+const mobileNav = document.getElementById('mobileNav');
+
+burger.addEventListener('click', () => {
+    mobileNav.classList.toggle('active');
+    burger.classList.toggle('open');
 });

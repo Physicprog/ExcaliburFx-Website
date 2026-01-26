@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
     <title>Khylian | Home</title>
-
+    <link rel="stylesheet" href="./css/loader.css">
     <!-- GSAP for animations -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <link rel="stylesheet"
@@ -27,6 +27,39 @@
             height: 100vh;
             position: relative;
             background: #000;
+        }
+
+        #loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            backdrop-filter: blur(5px);
+            background-color: rgba(0, 0, 0, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 99999;
+        }
+
+        .spinner {
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid var(--accent-color);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
         }
 
         .container {
@@ -232,6 +265,10 @@
 </head>
 
 <body>
+    <div id="loader">
+        <div class="spinner"></div>
+    </div>
+
     <div class="noise"></div>
 
     <div class="container">
@@ -252,7 +289,9 @@
             <div class="particles" id="particles-right"></div>
             <div class="content">
                 <div class="icon">
-                    <span class="material-symbols-outlined">work</span>
+                    <span class="material-symbols-outlined">
+                        developer_board
+                    </span>
                 </div>
                 <h1>Professionnel</h1>
                 <p>Expérience, compétences & réalisations</p>
@@ -263,7 +302,6 @@
     <div class="hint">Choisissez votre route</div>
 
     <script>
-        // Create particles
         function createParticles(containerId, count) {
             const container = document.getElementById(containerId);
             for (let i = 0; i < count; i++) {
@@ -288,7 +326,6 @@
         createParticles('particles-left', 30);
         createParticles('particles-right', 30);
 
-        // Animate elements on load
         gsap.timeline()
             .to('.content', {
                 opacity: 1,
@@ -311,7 +348,6 @@
                 ease: 'sine.inOut'
             });
 
-        // Divider pulse animation
         gsap.to('.divider', {
             opacity: 0.4,
             duration: 2,
@@ -320,7 +356,6 @@
             ease: 'sine.inOut'
         });
 
-        // Handle side clicks
         document.querySelectorAll('.side').forEach(side => {
             side.addEventListener('click', function () {
                 const url = this.dataset.url;
@@ -328,24 +363,20 @@
                     ? document.querySelector('.right')
                     : document.querySelector('.left');
 
-                // Add active class
                 this.classList.add('active');
 
-                // Animate out other side
                 gsap.to(otherSide, {
                     opacity: 0,
                     duration: 0.6,
                     ease: 'power2.inOut'
                 });
 
-                // Scale up clicked side content
                 gsap.to(this.querySelector('.content'), {
                     scale: 1.1,
                     duration: 0.8,
                     ease: 'power2.inOut'
                 });
 
-                // Fade out divider and hint
                 gsap.to('.divider, .hint', {
                     opacity: 0,
                     duration: 0.5
@@ -375,6 +406,7 @@
             });
         });
     </script>
+    <script src="./js/main.js"></script>
 </body>
 
 </html>

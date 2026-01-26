@@ -5,7 +5,7 @@
 @import url('./components/about.css');
 @import url('./components/footer.css');
 @import url('./components/projectShowcase.css');
-
+@import url('./components/breadcumb.css');
 
 
 @font-face {
@@ -27,7 +27,8 @@ html {
     --bg-dark: #0E0C0C;
     --text-light: #ffffff;
     --text-gray: #898989;
-    --accent-color: #ff6b35;
+    /* Couleur d'accent dynamique contrôlée par JavaScript */
+    --accent-color: hsl(270, 100%, 55%);
     --purple-color: #702fc0;
     --glass-bg: rgba(255, 255, 255, 0.05);
     --glass-border: rgba(255, 255, 255, 0.1);
@@ -39,6 +40,7 @@ body {
     color: var(--text-light);
     line-height: 1.6;
     overflow-x: hidden;
+    image-rendering: crisp-edges;
 }
 
 #customText::after {
@@ -46,6 +48,14 @@ body {
     display: inline-block;
     margin-left: 2px;
     animation: blink 2s steps(1) infinite;
+}
+
+img {
+    user-select: none;
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
 }
 
 @keyframes blink {
@@ -60,4 +70,8 @@ body {
     75% {
         opacity: 0;
     }
+}
+
+strong {
+    color: var(--accent-color);
 }

@@ -44,10 +44,7 @@
     object-fit: contain;
     display: block;
     margin: 0 auto;
-    -webkit-user-drag: none;
-    -khtml-user-drag: none;
-    -moz-user-drag: none;
-    -o-user-drag: none;
+
 }
 
 .slide p {
