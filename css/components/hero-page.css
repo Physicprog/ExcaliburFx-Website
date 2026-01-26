@@ -1,4 +1,5 @@
 .hero-section {
+    position: relative;
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -7,7 +8,31 @@
     overflow: hidden;
 }
 
+
+
+.bgImage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    overflow: hidden;
+    filter: blur(2px) brightness(0.3);
+}
+
+.bgImage video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+    display: block;
+}
+
+
 .hero-container {
+    position: relative;
+    z-index: 10;
     max-width: 1000px;
     width: 100%;
     margin-top: 15vh;
@@ -16,8 +41,6 @@
     align-items: center;
     gap: 2rem;
     text-align: center;
-    position: relative;
-    z-index: 1;
 }
 
 .hero-content {

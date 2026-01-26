@@ -33,7 +33,7 @@ function addStarRating() {
 
 async function animateText() {
     const div = document.querySelector('#customText');
-    const words = ["construire", "agrandir", "améliorer", "innover", "transformer"];
+    const words = ["construire ?", "agrandir ?", "améliorer ?", "innover ?", "transformer ?", "élever ?", "révolutionner ?"];
     const delay = ms => new Promise(res => setTimeout(res, ms));
 
     while (true) {
@@ -192,7 +192,7 @@ setInterval(animateCircle, 4000);
 
 function compterJusqua(element) {
     const cible = parseFloat(element.getAttribute('data-target'));
-    const unite = element.textContent.trim(); // 'M' ou 'K'
+    const unite = element.textContent.trim();
     const duree = 2000;
     const debut = Date.now();
 
@@ -353,61 +353,3 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-
-
-
-const form = document.getElementById('form');
-const submitBtn = form.querySelector('button[type="submit"]');
-
-form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    const formData = new FormData(form);
-    formData.append("access_key", "62fa18fd-3cf0-4a38-abdb-63a9689b731f");
-
-    const originalText = submitBtn.textContent;
-
-    submitBtn.textContent = "Sending...";
-    submitBtn.disabled = true;
-
-    try {
-        const response = await fetch("https://api.web3forms.com/submit", {
-            method: "POST",
-            body: formData
-        });
-
-        const data = await response.json();
-
-        if (response.ok) {
-            alert("Success! Your message has been sent.");
-            form.reset();
-        } else {
-            alert("Error: " + data.message);
-        }
-
-    } catch (error) {
-        alert("Something went wrong. Please try again.");
-    } finally {
-        submitBtn.textContent = originalText;
-        submitBtn.disabled = false;
-    }
-});
-
-
-
-
-
-
-
-
-
-
-
-
-const burger = document.getElementById('burger');
-const mobileNav = document.getElementById('mobileNav');
-
-burger.addEventListener('click', () => {
-    mobileNav.classList.toggle('active');
-    burger.classList.toggle('open');
-});
