@@ -1,19 +1,23 @@
+/* ============================================
+   NAVBAR - RESPONSIVE OPTIMIZED (V2)
+   Bouton settings plus à droite et fixe
+   ============================================ */
+
 .site-header {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 1000;
-    padding: 2rem 0;
+    padding: clamp(1rem, 3vw, 2rem) 0;
     width: 100%;
     will-change: transform;
 }
 
-
 .header-container {
-    max-width: 720px;
+    max-width: min(720px, 90vw);
     margin: 0 auto;
-    padding: 0 2rem;
+    padding: 0 clamp(1rem, 4vw, 2rem);
 }
 
 .header-inner {
@@ -21,44 +25,42 @@
     backdrop-filter: blur(3px);
     border: 2px solid var(--glass-border);
     border-top: 1px solid var(--accent-color);
-    border-radius: 15px;
-    padding: 1rem 2rem;
+    border-radius: clamp(10px, 2vw, 15px);
+    padding: clamp(0.75rem, 2vw, 1rem) clamp(1rem, 3vw, 2rem);
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 1rem;
 }
 
 .logo-section {
     display: flex;
     align-items: center;
+    flex-shrink: 0;
 }
 
 .logo-navbar {
-    width: 50px;
-    height: 50px;
+    width: clamp(35px, 8vw, 50px);
+    height: clamp(35px, 8vw, 50px);
     background-image: url('./../../assets/img/logo.webp');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    display: flex;
-
 }
 
 .main-navigation {
     display: flex;
-    gap: 1rem;
+    gap: clamp(0.5rem, 2vw, 1rem);
+    align-items: center;
+    flex-wrap: nowrap;
 }
-
-
-
-
 
 .btn-project,
 .btn-contact {
     display: inline-block;
-    padding: 0.4rem .8rem;
-    border-radius: 8px;
-    font-size: 14px;
+    padding: clamp(0.3rem, 1.5vw, 0.5rem) clamp(0.6rem, 2vw, 1rem);
+    border-radius: clamp(6px, 1.5vw, 8px);
+    font-size: clamp(11px, 2.5vw, 14px);
     font-weight: 700;
     border: 1px solid var(--text-light);
     color: var(--text-light);
@@ -69,6 +71,7 @@
     z-index: 1;
     font-family: inherit;
     transition: color 0.3s ease;
+    white-space: nowrap;
 }
 
 .btn-project::before,
@@ -115,15 +118,15 @@
     color: var(--text-light);
 }
 
-
-
-
-
+/* ============================================
+   SETTINGS PANEL - PLUS À DROITE ET FIXE
+   ============================================ */
 
 .settingsPanel {
     position: fixed;
-    top: 1.5rem;
-    right: max(0px, calc((75vw - 50rem) / 2));
+    top: clamp(1rem, 3vw, 1.5rem);
+    /* Positionnement plus à droite - presque au bord de l'écran */
+    right: clamp(0.5rem, 2vw, 1rem);
     z-index: 9999;
 }
 
@@ -136,13 +139,17 @@
     justify-content: center;
     cursor: pointer;
     transition: all 0.3s ease;
+    /* Fond semi-transparent pour le rendre plus visible */
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
 }
 
 .settingsIcon:hover {
     transform: rotate(90deg) scale(1.1);
+    background: rgba(0, 0, 0, 0.5);
 }
 
-.settingsIcon .material-icons {
+.settingsIcon .material-symbols-outlined {
     color: #fff;
     font-size: clamp(22px, 5vw, 30px);
     user-select: none;
@@ -150,12 +157,14 @@
 
 .settingsContent {
     position: absolute;
-    top: 3vh;
+    top: calc(clamp(2.5rem, 6vw, 3rem) + 0.5rem);
+    /* Aligné à droite du bouton */
     right: 0;
-    width: 40vh;
+    width: min(90vw, 350px);
+    max-width: 40vh;
     background: rgba(20, 20, 20, 0.98);
     backdrop-filter: blur(20px);
-    border-radius: 16px;
+    border-radius: clamp(12px, 2vw, 16px);
     padding: 0;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -166,9 +175,9 @@
     overflow: hidden;
 }
 
-
 #textCheckbox {
     margin: 0;
+    font-size: clamp(0.8rem, 2vw, 0.9rem);
 }
 
 .settingsPanel.active .settingsContent {
@@ -178,9 +187,9 @@
 }
 
 .settingsContent h3 {
-    padding: 1.5rem;
+    padding: clamp(1rem, 2.5vw, 1.5rem);
     margin: 0;
-    font-size: 1.25rem;
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
     font-weight: 600;
     background: var(--accent-color);
     -webkit-background-clip: text;
@@ -189,11 +198,11 @@
 }
 
 .settings-body {
-    padding: 1.5rem;
+    padding: clamp(1rem, 2.5vw, 1.5rem);
 }
 
 .setting-item {
-    margin-bottom: 1.5rem;
+    margin-bottom: clamp(1rem, 2.5vw, 1.5rem);
 }
 
 .setting-item:last-child {
@@ -202,8 +211,8 @@
 
 .setting-item label {
     display: block;
-    margin-bottom: 0.75rem;
-    font-size: 0.9rem;
+    margin-bottom: clamp(0.5rem, 1.5vw, 0.75rem);
+    font-size: clamp(0.75rem, 2vw, 0.9rem);
     color: rgba(255, 255, 255, 0.8);
     font-weight: 500;
 }
@@ -212,7 +221,7 @@
     -webkit-appearance: none;
     appearance: none;
     width: 100%;
-    height: 15px;
+    height: clamp(12px, 2vw, 15px);
     border-radius: 10px;
     background: linear-gradient(90deg,
             hsl(0, 100%, 55%) 0%,
@@ -226,43 +235,17 @@
 }
 
 #slider2 {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 100%;
-    height: 15px;
-    border-radius: 10px;
     background: linear-gradient(-90deg,
             #696969 0%,
             #aaa 50%,
             #fff 100%);
-    outline: none;
 }
 
 .setting-item input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
-    width: 6px;
-    height: 26px;
-    background: #fff;
-    border-radius: 3px;
-    cursor: pointer;
-    box-shadow: 0 0 0 2px var(--accent-color);
-}
-
-.normal_underline {
-    height: 0.75vh;
-    width: 90%;
-    background-color: var(--accent-color);
-    border-radius: 0.55vh;
-    margin: 1vh 5%;
-    box-shadow: 0px 0px 15px var(--accent-color);
-}
-
-.setting-item input[type="range"]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 18px;
-    height: 18px;
+    width: clamp(16px, 3vw, 18px);
+    height: clamp(16px, 3vw, 18px);
     background: var(--accent-color);
     border-radius: 50%;
     cursor: pointer;
@@ -276,8 +259,8 @@
 }
 
 .setting-item input[type="range"]::-moz-range-thumb {
-    width: 18px;
-    height: 18px;
+    width: clamp(16px, 3vw, 18px);
+    height: clamp(16px, 3vw, 18px);
     background: var(--accent-color);
     border-radius: 50%;
     cursor: pointer;
@@ -285,15 +268,25 @@
     box-shadow: 0 2px 8px var(--accent-color);
 }
 
+.normal_underline {
+    height: clamp(0.5vh, 1vw, 0.75vh);
+    width: 90%;
+    background-color: var(--accent-color);
+    border-radius: 0.55vh;
+    margin: clamp(0.5vh, 1.5vw, 1vh) 5%;
+    box-shadow: 0px 0px 15px var(--accent-color);
+}
+
 .checkbox-wrapper {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
+    gap: clamp(0.5rem, 1.5vw, 0.75rem);
+    flex-wrap: wrap;
 }
 
 .setting-item input[type="checkbox"] {
-    width: 50px;
-    height: 26px;
+    width: clamp(40px, 8vw, 50px);
+    height: clamp(22px, 4vw, 26px);
     position: relative;
     -webkit-appearance: none;
     background: rgba(255, 255, 255, 0.1);
@@ -301,6 +294,7 @@
     border-radius: 20px;
     cursor: pointer;
     transition: all 0.3s ease;
+    flex-shrink: 0;
 }
 
 .setting-item input[type="checkbox"]:checked {
@@ -310,8 +304,8 @@
 .setting-item input[type="checkbox"]::before {
     content: '';
     position: absolute;
-    width: 20px;
-    height: 20px;
+    width: clamp(16px, 3.5vw, 20px);
+    height: clamp(16px, 3.5vw, 20px);
     border-radius: 50%;
     top: 3px;
     left: 3px;
@@ -321,54 +315,126 @@
 }
 
 .setting-item input[type="checkbox"]:checked::before {
-    transform: translateX(24px);
+    transform: translateX(clamp(18px, 4vw, 24px));
 }
-
-
-
 
 .slider-value {
     display: inline-block;
     margin-left: 0.5rem;
-    font-size: 0.85rem;
+    font-size: clamp(0.7rem, 1.8vw, 0.85rem);
     color: var(--accent-color);
     font-weight: 600;
 }
 
+/* ============================================
+   RESPONSIVE BREAKPOINTS
+   ============================================ */
+
+/* Tablets et petits écrans */
 @media (max-width: 768px) {
-    .burger {
-        display: flex;
+    .header-container {
+        padding: 0 1rem;
     }
 
-    .main-navigation {
-        display: none;
+    .settingsPanel {
+        /* Reste proche du bord droit */
+        right: 0.75rem;
     }
 
-    .main-navigation.mobile.active {
-        display: flex;
+    .settingsContent {
+        max-width: none;
+        /* Ajuste pour ne pas dépasser l'écran */
+        width: min(calc(100vw - 1rem), 350px);
+        /* Aligné à droite de l'écran */
+        right: -0.5rem;
     }
 }
 
-
+/* Smartphones */
 @media (max-width: 480px) {
+    .site-header {
+        padding: 0.75rem 0;
+    }
+
     .header-inner {
-        flex-direction: row;
-        justify-content: space-between;
         padding: 0.6rem 1rem;
+        gap: 0.5rem;
+    }
+
+    .main-navigation {
+        gap: 0.5rem;
     }
 
     .btn-project,
     .btn-contact {
-        width: 100%;
-        text-align: center;
-        font-size: 12px;
-        padding: 0.3rem 0;
+        font-size: 11px;
+        padding: 0.35rem 0.7rem;
+    }
+
+    .settingsPanel {
+        /* Très proche du bord sur mobile */
+        right: 0.5rem;
     }
 
     .settingsContent {
-        width: calc(100vw - 2rem);
-        right: 0;
-        left: auto;
-        border-radius: 14px;
+        /* Panel prend presque toute la largeur sur mobile */
+        width: calc(100vw - 1rem);
+        right: -0.25rem;
+    }
+
+    .settings-body {
+        padding: 1rem;
+    }
+}
+
+/* Très petits écrans */
+@media (max-width: 360px) {
+
+    .btn-project,
+    .btn-contact {
+        font-size: 10px;
+        padding: 0.3rem 0.6rem;
+    }
+
+    .logo-navbar {
+        width: 35px;
+        height: 35px;
+    }
+
+    .settingsPanel {
+        right: 0.25rem;
+    }
+}
+
+/* Landscape mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+    .site-header {
+        padding: 0.5rem 0;
+    }
+
+    .settingsContent {
+        max-height: 80vh;
+        overflow-y: auto;
+    }
+
+    .settingsPanel {
+        /* Garde sa position à droite en landscape */
+        right: 0.5rem;
+    }
+}
+
+/* Desktop - Garde le bouton bien à droite */
+@media (min-width: 1024px) {
+    .settingsPanel {
+        /* Position fixe à droite avec un espacement confortable */
+        right: max(1rem, calc((100vw - 1200px) / 2));
+    }
+}
+
+/* Ultra-wide screens */
+@media (min-width: 1920px) {
+    .settingsPanel {
+        /* Ne va pas trop loin à droite sur très grands écrans */
+        right: max(2rem, calc((100vw - 1400px) / 2));
     }
 }

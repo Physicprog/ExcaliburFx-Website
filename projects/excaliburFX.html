@@ -5,50 +5,61 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ExcaliburFX</title>
-    <link rel="stylesheet" href="./../css/styles.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <style>
-    .test {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: 100vh;
-        text-align: center;
+    body {
         font-family: Arial, sans-serif;
-        background-color: var(--background-color);
-        color: var(--text-color);
+        margin: 20px;
+        background-color: #f4f4f4;
+        color: #333;
+    }
+
+    header {
+        text-align: center;
+        margin-bottom: 50px;
     }
 
     h1 {
         font-size: 2.5em;
-        margin-bottom: 20px;
-    }
-
-    h3 {
-        font-size: 1.5em;
         margin-bottom: 10px;
     }
 
-    a {
+    p {
         font-size: 1.2em;
-        color: var(--accent-color);
+    }
+
+    a {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 10px 20px;
+        background-color: #007BFF;
+        color: white;
         text-decoration: none;
+        border-radius: 5px;
     }
 
     a:hover {
-        text-decoration: underline;
+        background-color: #0056b3;
     }
 </style>
 
-
 <body>
-    <div class="test">
-        <h1>La page n'a pas encore été créée mais elle arrive bientôt !</h1>
-        <h3>Si vous voulez toujours decourvir le projet voici le lien du repository sir Github.</h3>
-        <a href="https://github.com/Physicprog/ExcaliburFX">Lien du repository ExcaliburFX</a>
-    </div>
+    <header>
+        <h1>Projet ExcaliburFX</h1>
+        <p>Ce projet n'est pas terminé, vous pouvez quand même visiter la page github</p>
+        <a href="https://github.com/Physicprog/ExcaliburFX" target="_blank">GitHub</a>
+
+
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+            integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"
+            integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="script.js"></script>
 </body>
 
 </html>
